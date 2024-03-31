@@ -1,26 +1,41 @@
-# create alphabet dictionary
-def create_caesar_cipher_dict(shift):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    caesar_dict = {}
-    for i in range(len(alphabet)):
-        caesar_dict[alphabet[i]] = alphabet[(i + shift) % len(alphabet)]
-    return caesar_dict
+def caesar_encrypt(text, shift):
+    encrypted_text = ""
+    # Loop through each character in the plaintext
+    for char in text:
+        # Check if the character is a letter
+        if char.isalpha():
+            # Determine whether it's uppercase or lowercase
+            if char.isupper():
+                # Apply the shift for uppercase letters
+                encrypted_text += chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+            else:
+                # Apply the shift for lowercase letters
+                encrypted_text += chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+        else:
+            # For non-alphabetic characters, just append them unchanged
+            encrypted_text += char
+    return encrypted_text
 
-caesar_dict_shift_5 = create_caesar_cipher_dict(5)
+# Function to decrypt Caesar cipher (optional)
+def caesar_decrypt(text, shift):
+    # Implement the decryption logic here
+    pass
 
-print(caesar_dict_shift_5)
+def main():
+    # Get user input
+    plaintext = input("Enter the message to encrypt: ")
+    shift = int(input("Enter the shift value: "))
+    
+    # Encrypt the message
+    encrypted_message = caesar_encrypt(plaintext, shift)
+    print("Encrypted message:", encrypted_message)
 
+    # Decrypt the message (optional)
+    # decrypted_message = caesar_decrypt(encrypted_message, shift)
+    # print("Decrypted message:", decrypted_message)
 
-#Create a function to encrypt a message using the Caesar cipher
-    #- Input: message, shift amount
-    #- Output: encrypted message
-    #- For each letter in the message, use the shift function to encrypt the letter
-
-def encrypt_caesar_cipher(message, shift_amount):
-    encrypted_message = ''
-    for letter in message:
-        encrypted_message += shift_letter(letter, shift_amount)
-    return encrypted_message
+if __name__ == "__main__":
+    main()
 
 
 
