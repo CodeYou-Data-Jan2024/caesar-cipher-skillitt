@@ -1,27 +1,29 @@
-# create alphabet dictionary
-def create_caesar_cipher_dict(shift):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    caesar_dict = {}
-    for i in range(len(alphabet)):
-        caesar_dict[alphabet[i]] = alphabet[(i + shift) % len(alphabet)]
-    return caesar_dict
 
-caesar_dict_shift_5 = create_caesar_cipher_dict(5)
+def caesar_encrypt(plaintext, shift):
+    encrypted_text = ""  
+    for char in plaintext: 
+        if char.isalpha():  
+            if char.isupper():  
+                # Apply shift to uppercase letters
+                encrypted_text += chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+            else:  # The character is lowercase
+                # Apply shift to lowercase letters
+                encrypted_text += chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+        else:  # If the character is not a letter.
+            encrypted_text += char 
+    return encrypted_text 
 
-print(caesar_dict_shift_5)
+def main():
+    # Prompt the user to enter the plaintext message.
+    plaintext = input("please enter your message here: ")
+    shift = int(5)
+    
+    encrypted_message = caesar_encrypt(plaintext, shift)
+    print("Encrypted message:", encrypted_message)
 
+<<<<<<< HEAD
 
-#Create a function to encrypt a message using the Caesar cipher
-    #- Input: message, shift amount
-    #- Output: encrypted message
-    #- For each letter in the message, use the shift function to encrypt the letter
-
-def encrypt_caesar_cipher(message, shift_amount):
-    encrypted_message = ''
-    for letter in message:
-        encrypted_message += shift_letter(letter, shift_amount)
-    return encrypted_message
-
-
-
-
+=======
+if __name__ == "__main__":
+    main()
+>>>>>>> 9038f72eccbd598287292484e7b9f9ba6a1ca9b7
