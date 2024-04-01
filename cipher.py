@@ -21,8 +21,5 @@ def main():
     encrypted_message = caesar_encrypt(plaintext, shift)
     print("Encrypted message:", encrypted_message)
 
-<<<<<<< HEAD
-
-=======
 if __name__ == "__main__":
     main()
